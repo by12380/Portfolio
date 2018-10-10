@@ -6,12 +6,12 @@
         <h1 class="header">ABOUT ME</h1>
         <div class="row content">
         <div class="col-md-6">
-            <p >I am a software developer based in Los Angeles. I love coding because solving problems and seeing ideas come to life is supremely gratifying.</p>
-            <p>I admire the art of writing clean and modular code, and quite often I find myself submerged in coding challenges and revering others' clever algorithms.</p>
+            <p>{{content.part1}}</p>
+            <p>{{content.part2}}</p>
         </div>
         <div class="col-md-6">
-            <p>When I'm not coding, I read up on topics related to medical research, physics, and the Bible. I also teach kids in math and science, educating by the way of inspiration, not obligation.</p>
-            <p>I have many dreams to fulfill, but the current top three would be to open a pasta restaurant, travel around the world, and give to scientific reserach.</p>
+            <p>{{content.part3}}</p>
+            <p>{{content.part4}}</p>
         </div>
         </div>
     </div>
@@ -21,9 +21,28 @@
 </template>
 
 <script>
-    export default {
-        name: 'About'
-    }
+  export default {
+      name: 'About',
+      data() {
+        return {
+          content: {
+            part1: `I am a software developer based in Los Angeles.
+             I love coding because solving problems and
+             seeing ideas come to life is supremely gratifying.`,
+            part2: `I consider writing clean and modular code a
+             work of art, and quite often I find myself submerged
+             in coding challenges and revering others' clever algorithms.`,
+            part3: `When I'm not coding, I read up on topics related
+             to medical research, physics, and the Bible.
+             I also teach kids in math and science,
+             educating by the way of inspiration, not obligation.`,
+            part4: `I have many dreams to fulfill, but the current
+             top three would be to open a pasta restaurant,
+             travel around the world, and to give to scientific reserach.`
+          }
+        }
+      }
+  }
 </script>
 
 <style scoped>
