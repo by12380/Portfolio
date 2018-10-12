@@ -1,14 +1,16 @@
 <template>
-    <div class="app-section">
+    <div class="app-section container-fluid">
       <div class="app-bg"></div>
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <h1 class="header">APPS</h1>
-          <h1 class="name">BRIAN YOUNG</h1>
-          <h2 class="title">Software Developer</h2>
-          <h1 class="name">BRIAN YOUNG</h1>
-          <h2 class="title">Software Developer</h2>
+          <Project
+            v-for="(project, index) in projects"
+            :key="index"
+            :project="project"
+            :align="setAlign(index)"
+            class="project-container" />
         </div>
         <div class="col-md-1"></div>
       </div>
@@ -16,9 +18,63 @@
 </template>
 
 <script>
-    export default {
-        name: 'Applications'
+import Project from './Project.vue';
+
+export default {
+    name: 'Applications',
+    components: {
+      Project
+    },
+    created: function() {
+      window.addEventListener("resize", this.setWidth);
+    },
+    destroyed: function() {
+      window.addEventListener("resize", this.setWidth);
+    },
+    data() {
+        return {
+          projects: [
+            {
+              title: 'React Universal',
+              description: `Open Source React+Redux boilerplate for web, mobile,
+                and desktop app development with social-login ready.`,
+              techStack: ['React', 'Redux', 'Expo', 'Electron', 'Express', 'MongoDB', 'Auth0', 'Socket.io'],
+              liveDemoLink: 'https://by12380.github.io/react-universal/',
+              repoLink: 'https://github.com/by12380/react-universal',
+              image: 'react-universal.jpg'
+            },
+            {
+              title: 'Reminder.ai',
+              description: `A powerful reminder app featuring time-progress alerts, email notifications,
+               and speech recognition (set reminder by speech).`,
+              techStack: ['Express', 'Passport.js', 'Socket.io', 'Nodemailer', 'Node-schedule', 'D3.js', 'Moment.js', 'Wit.ai API'],
+              liveDemoLink: 'https://reminder-ai.herokuapp.com/',
+              repoLink: 'https://github.com/by12380/Reminder-ai',
+              image: 'reminder-ai.jpg'
+            },
+            {
+              title: 'WhatsVocab',
+              description: `A online vocabulary learning application. Users can search up a particular
+               vocabulary and obtain it's definitions and it's
+               context usage in modern news articles on the web.`,
+              techStack: ['HTML', 'CSS', 'Jquery', 'Longman Dictionary API', 'News API'],
+              liveDemoLink: 'https://by12380.github.io/WhatsVocab/',
+              repoLink: 'https://github.com/by12380/WhatsVocab',
+              image: 'whatsvocab.jpg'
+            }
+          ],
+          width: window.innerWidth
+        }
+    },
+    methods: {
+      setWidth: function() {
+        this.width = window.innerWidth;
+      },
+      setAlign: function(index) {
+        return (index % 2 && this.width > 768) ? 'right' : 'left';
+      }
     }
+}
 </script>
 
 <style scoped>
@@ -27,7 +83,6 @@
   position: relative;
   text-align: left;
   padding-top: 80px;
-  padding-bottom: 80px;
 }
 
 .app-bg {
@@ -63,6 +118,11 @@
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+.project-container {
+  margin-top: 80px;
+  margin-bottom: 100px;
 }
 </style>
 

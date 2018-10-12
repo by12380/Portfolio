@@ -36,7 +36,7 @@
              to medical research, physics, and the Bible.
              I also teach kids in math and science,
              educating by the way of inspiration, not obligation.`,
-            part4: `I have many dreams to fulfill, but the current
+            part4: `I have many dreams to fulfill, but the
              top three would be to open a pasta restaurant,
              travel around the world, and to give to scientific reserach.`
           }
