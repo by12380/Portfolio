@@ -135,7 +135,7 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-    .image-wrapper img {
+    .overlay-wrapper {
         position: relative;
         margin-top: 20px;
     }
