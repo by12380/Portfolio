@@ -75,6 +75,7 @@
 
 .about-section .content {
   padding-top: 20px;
+  line-height: 26px;
 }
 
 .about-section .content p {

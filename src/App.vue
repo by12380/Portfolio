@@ -11,6 +11,7 @@
     </div>
     <About />
     <Applications />
+    <Contact />
   </div>
 </template>
 
@@ -18,13 +19,15 @@
 import Navbar from './components/Navbar.vue'
 import About from './components/About.vue'
 import Applications from './components/Applications.vue'
+import Contact from './components/Contact.vue'
 
 export default {
   name: 'app',
   components: {
     Navbar,
     About,
-    Applications
+    Applications,
+    Contact
   }
 }
 </script>
