@@ -4,7 +4,7 @@
     <div class="landing-page">
       <div class="bg"></div>
       <div class="profile-wrapper">
-        <img alt="Vue logo" src="./assets/profile.jpg" />
+        <img alt="Vue logo" src="./assets/images/profile.jpg" />
       </div>
       <h1 class="name">BRIAN YOUNG</h1>
       <h2 class="title">Software Developer</h2>
@@ -68,7 +68,7 @@ body {
   top: 0;
   left: 0;
   background-image:
-    url("./assets/newport-beach.jpg");
+    url("./assets/images/newport-beach.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

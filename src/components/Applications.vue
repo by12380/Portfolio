@@ -90,7 +90,7 @@ export default {
   top: 0;
   left: 0;
   background-image:
-    url("../assets/app-bg.jpg");
+    url("../assets/images/app-bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

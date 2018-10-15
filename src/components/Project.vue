@@ -37,7 +37,7 @@
         data() {
             return {
                 title: this.project.title.toUpperCase(),
-                image: require(`../assets/${this.project.image}`)
+                image: require(`../assets/images/${this.project.image}`)
             }
         }
     }
