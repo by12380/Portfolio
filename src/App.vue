@@ -48,7 +48,7 @@ export default {
               hH = $(`#${section}`).outerHeight();
 
           //Check if scroll position is in section
-          if (wS > hT - 5 && wS < hT + hH + 5){
+          if (wS > hT - 50 && wS < hT + hH + 5){
               that.activePage = section;
           }
 
