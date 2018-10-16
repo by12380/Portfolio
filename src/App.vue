@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar id="navbar" :activePage="activePage" :isTop="isTop" v-scroll-reveal="{ origin: 'top' }"/>
+    <Navbar id="navbar" :isTop="isTop" v-scroll-reveal="{ origin: 'top' }"/>
     <Home id="home" />
     <About id="about" />
     <Applications id="applications" />
@@ -16,6 +16,7 @@ import About from './components/About.vue'
 import Applications from './components/Applications.vue'
 import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
+import { eventBus } from './main';
 import $ from 'jquery';
 
 export default {
@@ -30,7 +31,6 @@ export default {
   },
   data: function() {
     return {
-      activePage: 'home',
       isTop: true
     }
   },
@@ -52,12 +52,12 @@ export default {
 
           //Check if scroll position is in section
           if (wS > hT - 50 && wS < hT + hH + 5){
-              that.activePage = section;
+            eventBus.$emit('activePage', section);
           }
 
           //Check if scroll position is near bottom of page
           if (wS + wH > dH - 30) {
-              that.activePage = sectionId[sectionId.length - 1];
+            eventBus.$emit('activePage', sectionId[sectionId.length - 1]);
           }
 
         }

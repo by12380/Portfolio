@@ -10,9 +10,21 @@
 </template>
 
 <script>
+import { eventBus } from '../main';
+
 export default {
     name: 'Navbar',
-    props: ['activePage', 'isTop']
+    props: ['isTop'],
+    data: function() {
+        return {
+            activePage: 'Home'
+        }
+    },
+    created () {
+        eventBus.$on('activePage', (activePage) => {
+            this.activePage = activePage;
+        })
+    }
 }
 </script>
 
