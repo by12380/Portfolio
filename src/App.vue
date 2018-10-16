@@ -5,6 +5,7 @@
     <About id="about" />
     <Applications id="applications" />
     <Contact id="contact" />
+    <Footer />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Home from './components/Home.vue'
 import About from './components/About.vue'
 import Applications from './components/Applications.vue'
 import Contact from './components/Contact.vue'
+import Footer from './components/Footer.vue'
 import $ from 'jquery';
 
 export default {
@@ -23,7 +25,8 @@ export default {
     Home,
     About,
     Applications,
-    Contact
+    Contact,
+    Footer
   },
   data: function() {
     return {

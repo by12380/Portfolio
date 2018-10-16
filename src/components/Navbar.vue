@@ -29,7 +29,7 @@ export default {
 .navbar ul.active {
     padding-top: 3px;
     padding-bottom: 3px;
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(245, 245, 250);
     box-shadow: 0 2px 4px 0 #b1b1b1;
 }
 
