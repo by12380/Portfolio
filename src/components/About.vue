@@ -3,8 +3,8 @@
     <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
-        <h1 class="header">ABOUT ME</h1>
-        <div class="row content">
+        <h1 class="header" v-scroll-reveal="{ origin: 'left' }">ABOUT ME</h1>
+        <div class="row content" v-scroll-reveal="{ origin: 'left', delay: 1000 }" >
         <div class="col-md-6">
             <p>{{content.part1}}</p>
             <p>{{content.part2}}</p>

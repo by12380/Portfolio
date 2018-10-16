@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <Navbar id="navbar" :activePage="activePage" :isTop="isTop"/>
+    <Navbar id="navbar" :activePage="activePage" :isTop="isTop" v-scroll-reveal="{ origin: 'top' }"/>
     <div id="home" class="landing-page">
       <div class="bg"></div>
-      <div class="profile-wrapper">
-        <img alt="Vue logo" src="./assets/images/profile.jpg" />
+      <div class="profile-wrapper" v-scroll-reveal>
+        <img alt="Vue logo" src="./assets/images/profile.jpg"/>
       </div>
-      <h1 class="name">BRIAN YOUNG</h1>
-      <h2 class="title">Software Developer</h2>
+      <h1 class="name" v-scroll-reveal="{ origin: 'left', delay: 1000 }">BRIAN YOUNG</h1>
+      <h2 class="title" v-scroll-reveal="{ origin: 'left', delay: 1000 }">Software Developer</h2>
     </div>
     <About id="about" />
     <Applications id="applications" />
@@ -142,6 +142,11 @@ body {
   margin: 0;
   text-shadow: 0px 3px 20px white;
   color: #243342;
+}
+
+.v-scroll-reveal {
+  opacity: 1 !important;
+  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) !important;
 }
 
 </style>

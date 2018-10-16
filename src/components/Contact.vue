@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-1 left-section"></div>
             <div class="col-md-5 left-section">
-                <h1 class="header">Contact</h1>
-                <div class="info">
+                <h1 class="header" v-scroll-reveal="{ origin: 'left' }">Contact</h1>
+                <div class="info" v-scroll-reveal>
                     <div class="row fields" v-for="(item, key, index) in info" :key="index">
                         <div class="col-sm-4">
                             <h3>{{key}}</h3>
@@ -17,8 +17,8 @@
             </div>
             <div class="col-md-1 right-section"></div>
             <div class="col-md-5 right-section">
-                <h1 class="header">Links</h1>
-                <div style="margin-bottom: 40px;">
+                <h1 class="header" v-scroll-reveal="{ origin: 'left' }">Links</h1>
+                <div style="margin-bottom: 40px;" v-scroll-reveal>
                     <div class="link-container" style="margin-top: 40px;">
                         <a :href="github" class="link-btn" target="_blank">
                             <i class="fab fa-github"></i>

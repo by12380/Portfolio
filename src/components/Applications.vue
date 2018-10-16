@@ -4,13 +4,14 @@
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
-          <h1 class="header">APPS</h1>
+          <h1 class="header" v-scroll-reveal="{ origin: 'left' }">APPS</h1>
           <Project
             v-for="(project, index) in projects"
             :key="index"
             :project="project"
             :align="setAlign(index)"
-            class="project-container" />
+            class="project-container"
+            v-scroll-reveal="{ delay: 1000 }" />
         </div>
         <div class="col-md-1"></div>
       </div>
