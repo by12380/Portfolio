@@ -1,6 +1,7 @@
 <template>
     <div class="navbar">
         <ul :class="[!isTop ? 'active' : null]">
+            <li class="nav-logo"><a>Brian Young</a></li>
             <li :class="[(activePage === 'contact') ? 'active' : null]" ><a href="#contact">Contact</a></li>
             <li :class="[(activePage === 'applications') ? 'active' : null]"><a href="#applications">Apps</a></li>
             <li :class="[(activePage === 'about') ? 'active' : null]"><a href="#about">About</a></li>
@@ -61,5 +62,13 @@ export default {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+.nav-logo {
+    float: left !important;
+}
+
+.nav-logo a {
+    color: rgb(58, 72, 87) !important;
 }
 </style>
