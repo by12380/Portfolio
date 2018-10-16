@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Navbar id="navbar" />
-    <div class="landing-page">
+    <Navbar id="navbar" :activePage="activePage" :isTop="isTop"/>
+    <div id="home" class="landing-page">
       <div class="bg"></div>
       <div class="profile-wrapper">
         <img alt="Vue logo" src="./assets/images/profile.jpg" />
@@ -9,9 +9,9 @@
       <h1 class="name">BRIAN YOUNG</h1>
       <h2 class="title">Software Developer</h2>
     </div>
-    <About />
-    <Applications />
-    <Contact />
+    <About id="about" />
+    <Applications id="applications" />
+    <Contact id="contact" />
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import Navbar from './components/Navbar.vue'
 import About from './components/About.vue'
 import Applications from './components/Applications.vue'
 import Contact from './components/Contact.vue'
+import $ from 'jquery';
 
 export default {
   name: 'app',
@@ -28,6 +29,49 @@ export default {
     About,
     Applications,
     Contact
+  },
+  data: function() {
+    return {
+      activePage: 'home',
+      isTop: true
+    }
+  },
+  mounted: function() {
+    const that = this;
+    this.$nextTick(() => {
+      //Manual scrollspy implementation
+      $(window).scroll(function() {
+        const sectionId = ['home', 'about', 'applications', 'contact'];
+
+        let wS = $(this).scrollTop(),
+            wH = $(window).height(),
+            dH = $(document).height();
+
+        for (let section of sectionId) {
+
+          let hT = $(`#${section}`).offset().top,
+              hH = $(`#${section}`).outerHeight();
+
+          //Check if scroll position is in section
+          if (wS > hT - 5 && wS < hT + hH + 5){
+              that.activePage = section;
+          }
+
+          //Check if scroll position is near bottom of page
+          if (wS + wH > dH - 30) {
+              that.activePage = sectionId[sectionId.length - 1];
+          }
+
+        }
+
+        //Check if scroll position is at top
+        if (wS < 10) {
+          that.isTop = true;
+        } else {
+          that.isTop = false;
+        }
+      });
+    })
   }
 }
 </script>
