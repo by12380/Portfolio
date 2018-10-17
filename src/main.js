@@ -10,10 +10,7 @@ Vue.use(VueScrollReveal, {
   delay: 500,
   duration: 1000,
   origin: 'bottom',
-  distance: '10px',
-  afterReveal: (el) => {
-    el.classList.add('v-scroll-reveal');
-  }
+  distance: '10px'
 });
 
 export const eventBus = new Vue();

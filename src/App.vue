@@ -98,10 +98,4 @@ body {
   z-index: 9999;
 }
 
-
-.v-scroll-reveal {
-  opacity: 1 !important;
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) !important;
-}
-
 </style>
