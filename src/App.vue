@@ -98,4 +98,8 @@ body {
   z-index: 9999;
 }
 
+.v-scroll-reveal {
+  opacity: 1 !important;
+}
+
 </style>
