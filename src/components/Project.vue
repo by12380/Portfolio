@@ -134,7 +134,7 @@ a {
     opacity: 1;
 }
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .overlay-wrapper {
         position: relative;
         margin-top: 20px;
