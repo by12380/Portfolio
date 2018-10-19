@@ -138,6 +138,8 @@ a {
     .overlay-wrapper {
         position: relative;
         margin-top: 20px;
+        top: 0;
+        transform: translate(-50%, 0%);
     }
 }
 </style>
