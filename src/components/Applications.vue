@@ -48,7 +48,7 @@ export default {
               title: 'Reminder.ai',
               description: `A powerful reminder app featuring time-progress alerts, email notifications,
                and speech recognition (set reminder by speech).`,
-              techStack: ['Express', 'Passport.js', 'Socket.io', 'Nodemailer', 'Node-schedule', 'D3.js', 'Moment.js', 'Wit.ai API'],
+              techStack: ['Express', 'Passport.js', 'Socket.io', 'Nodemailer', 'Node-schedule', 'D3.js', 'Moment.js', 'Wit.ai API', 'MongoDB'],
               liveDemoLink: 'https://reminder-ai.herokuapp.com/',
               repoLink: 'https://github.com/by12380/Reminder-ai',
               image: 'reminder-ai.jpg'
