@@ -54,8 +54,17 @@ export default {
               image: 'reminder-ai.jpg'
             },
             {
+              title: 'InstaVerse',
+              description: `A personal Bible study tool to search and save Bible verses in bulk. The app uses
+              the Recovery Version Bible for its scripture source.`,
+              techStack: ['Angular 4', 'ASP.Net Core', 'Firebase Auth & Database', 'LSM Bible API'],
+              liveDemoLink: 'http://instaver.se',
+              repoLink: 'https://github.com/by12380/InstaVerse',
+              image: 'instaverse.jpg'
+            },
+            {
               title: 'WhatsVocab',
-              description: `A online vocabulary learning application. Users can search up a particular
+              description: `An online vocabulary learning application. Users can search up a particular
                vocabulary and obtain it's definitions and it's
                context usage in modern news articles on the web.`,
               techStack: ['HTML', 'CSS', 'Jquery', 'Longman Dictionary API', 'News API'],
