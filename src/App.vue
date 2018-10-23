@@ -19,6 +19,7 @@ import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
 import Movies from './components/Movies.vue'
 import { eventBus } from './main';
+import { TMDB_API_DOMAIN, TMDB_API_KEY } from './config';
 import $ from 'jquery';
 
 export default {
@@ -34,8 +35,39 @@ export default {
   },
   data: function() {
     return {
-      isTop: true
+      isTop: true,
+      guestSession: {}
     }
+  },
+  methods: {
+    getGuestSession: function() {
+      const guestSession = JSON.parse(localStorage.getItem('guestSession'));
+      if (guestSession && Date.parse(guestSession.expires_at) > new Date().getTime()) {
+        this.guestSession = guestSession;
+      }
+      else {
+        this._createGuestSession();
+      }
+    },
+    _createGuestSession: function() {
+      this.$http.get(`https://${TMDB_API_DOMAIN}/3/authentication/guest_session/new?api_key=${TMDB_API_KEY}`)
+      .then((response) => {
+        const result = response.body;
+        this.guestSession = result;
+        localStorage.setItem('guestSession', JSON.stringify({...this.guestSession}));
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+    }
+  },
+  watch: {
+    guestSession: function(val) {
+      eventBus.$emit('guestSession', val);
+    }
+  },
+  created: function() {
+    this.getGuestSession();
   },
   mounted: function() {
     const that = this;

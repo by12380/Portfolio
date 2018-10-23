@@ -15,8 +15,11 @@
                 ref="movies"
                 @click="goTo(index)" >
                 <img :src="computedImageUrl(movie.poster_path)" />
-                <div class="bottom-stripe" v-if="currentIndex === index"></div>
-                <i class="fas fa-heart" v-if="currentIndex === index"></i>
+                <div v-if="currentIndex === index" style="display: inline-block;">
+                    <div class="bottom-stripe"></div>
+                    <i :class="[computedIsFavorite(movie.id) ? 'fas' : 'far', 'fa-heart']" @click="onFavoriteClick(movie.id)"></i>
+                    <span class="favorite-count">{{moviesFavoriteCount[movie.id] ? moviesFavoriteCount[movie.id] : 0}}</span>
+                </div>
             </div>
             <button class="next-btn" @click="goNext()">
                 <i class="fas fa-arrow-right"></i>
@@ -36,7 +39,12 @@
 </template>
 
 <script>
-import { TMDB_API_URL, TMDB_API_KEY, TMDB_MOVIE_LIST_ID } from '../config.js';
+import {
+    TMDB_API_DOMAIN,
+    TMDB_API_KEY,
+    TMDB_MOVIE_LIST_ID,
+    FIREBASE_DB_URL } from '../config.js';
+import { eventBus } from '../main.js';
 import $ from 'jquery';
 
 export default {
@@ -45,25 +53,70 @@ export default {
         return {
             movies: null,
             prevIndex: 0,
-            currentIndex: 0
+            currentIndex: 0,
+            guestSession: {},
+            userFavoriteMovies: {},
+            moviesFavoriteCount: {}
         }
     },
     methods: {
         getMovies: function() {
-            this.$http.get(`https://${TMDB_API_URL}/3/list/${TMDB_MOVIE_LIST_ID}?api_key=${TMDB_API_KEY}&language=en-US`)
+            this.$http.get(`https://${TMDB_API_DOMAIN}/3/list/${TMDB_MOVIE_LIST_ID}?api_key=${TMDB_API_KEY}&language=en-US`)
             .then((response) => {
                 this.movies = response.body;
             })
         },
+        getUserFavoraiteMovies: function() {
+            const userId = this.guestSession.guest_session_id;
+            this.$http.get(`${FIREBASE_DB_URL}/users/${userId}/movies.json`)
+            .then((response) => {
+                this.userFavoriteMovies = response.body;
+            })
+        },
+        getMoviesFavoriteCount: function() {
+            this.$http.get(`${FIREBASE_DB_URL}/movies.json`)
+            .then((response) => {
+                const movies = response.body;
+                let moviesFavoriteCount = {};
+                for (let movieId in movies) {
+                    let count = 0;
+                    for (let userId in movies[movieId]) {
+                        count++;
+                    }
+                    moviesFavoriteCount[movieId] = count;
+                }
+                this.moviesFavoriteCount = moviesFavoriteCount;
+            })
+        },
+        onFavoriteClick: function(movieId) {
+            const isFavorite = this.computedIsFavorite(movieId);
+            const userId = this.guestSession.guest_session_id;
+
+            this.$http.put(`${FIREBASE_DB_URL}/users/${userId}/movies/${movieId}.json`, { liked: !isFavorite })
+                .then((response) => {
+                    let method = response.body.liked ? 'put' : 'delete';
+                    return this.$http[method](`${FIREBASE_DB_URL}/movies/${movieId}/${userId}.json`, { value: true });
+                })
+                .then(() => {
+                    this.getUserFavoraiteMovies();
+                    this.getMoviesFavoriteCount();
+                });
+        },
         computedImageUrl: function(path) {
             return `https://image.tmdb.org/t/p/w300${path}`;
+        },
+        computedIsFavorite: function(movieId) {
+            const userFavoriteMovies = Object.assign ({}, this.userFavoriteMovies);
+            for (let id in userFavoriteMovies) {
+                if (id == movieId && userFavoriteMovies[id].liked) return true;
+            }
+            return false;
         },
         goTo: function(index) {
             this.prevIndex = this.currentIndex;
             this.currentIndex = index;
             let screenWidth = window.innerWidth;
             let leftPosition = this.$refs.movies[this.currentIndex].offsetLeft;
-            console.log(this.$refs.movies);
             let targetPosition
                 = (this.currentIndex > this.prevIndex )
                 ? (leftPosition - screenWidth / 2 + 175)
@@ -82,7 +135,24 @@ export default {
         }
     },
     created() {
+        //Load movies from TMDB collection
         this.getMovies();
+
+        //Bind 'guestSession' data from 'App.vue'
+        eventBus.$on('guestSession', (guestSession) => {
+            this.guestSession = guestSession;
+        })
+    },
+    watch: {
+        guestSession: function() {
+            this.getUserFavoraiteMovies();
+            this.getMoviesFavoriteCount();
+        },
+        currentIndex: function() {
+            //Re-fetch firebase database when user browses movies
+            this.getUserFavoraiteMovies();
+            this.getMoviesFavoriteCount();
+        }
     }
 }
 </script>
@@ -208,6 +278,20 @@ export default {
         bottom: 15px;
         left: 20px;
         color: rgb(255, 83, 83);
+        transition: 0.2s ease-in;
+    }
+
+    .image-container .fa-heart:hover {
+        font-size: 33px;
+    }
+
+    .favorite-count {
+        font-size: 26px;
+        position: absolute;
+        bottom: 11px;
+        left: 55px;
+        color: white;
+        font-weight: bold;
     }
 
 </style>
