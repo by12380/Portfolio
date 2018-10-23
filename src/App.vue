@@ -4,6 +4,7 @@
     <Home id="home" />
     <About id="about" />
     <Applications id="applications" />
+    <Movies id="movies" />
     <Contact id="contact" />
     <Footer />
   </div>
@@ -16,6 +17,7 @@ import About from './components/About.vue'
 import Applications from './components/Applications.vue'
 import Contact from './components/Contact.vue'
 import Footer from './components/Footer.vue'
+import Movies from './components/Movies.vue'
 import { eventBus } from './main';
 import $ from 'jquery';
 
@@ -27,7 +29,8 @@ export default {
     About,
     Applications,
     Contact,
-    Footer
+    Footer,
+    Movies
   },
   data: function() {
     return {
