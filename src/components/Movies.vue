@@ -15,11 +15,9 @@
                 ref="movies"
                 @click="goTo(index)" >
                 <img :src="computedImageUrl(movie.poster_path)" />
-                <div v-if="currentIndex === index" style="display: inline-block;">
-                    <div class="bottom-stripe"></div>
-                    <i :class="[computedIsFavorite(movie.id) ? 'fas' : 'far', 'fa-heart']" @click="onFavoriteClick(movie.id)"></i>
-                    <span class="favorite-count">{{moviesFavoriteCount[movie.id] ? moviesFavoriteCount[movie.id] : 0}}</span>
-                </div>
+                <div v-if="currentIndex === index" class="bottom-stripe"></div>
+                <i v-if="currentIndex === index" :class="[computedIsFavorite(movie.id) ? 'fas' : 'far', 'fa-heart']" @click="onFavoriteClick(movie.id)"></i>
+                <span v-if="currentIndex === index" class="favorite-count">{{moviesFavoriteCount[movie.id] ? moviesFavoriteCount[movie.id] : 0}}</span>
             </div>
             <button class="next-btn" @click="goNext()">
                 <i class="fas fa-arrow-right"></i>
