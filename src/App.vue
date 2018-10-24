@@ -74,7 +74,7 @@ export default {
     this.$nextTick(() => {
       //Manual scrollspy implementation
       $(window).scroll(function() {
-        const sectionId = ['home', 'about', 'applications', 'contact'];
+        const sectionId = ['home', 'about', 'applications', 'movies', 'contact'];
 
         let wS = $(this).scrollTop(),
             wH = $(window).height(),

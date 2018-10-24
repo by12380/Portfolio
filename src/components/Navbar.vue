@@ -2,29 +2,61 @@
     <div class="navbar">
         <ul :class="[!isTop ? 'active' : null]">
             <li class="nav-logo"><a>Brian Young</a></li>
-            <li :class="[(activePage === 'contact') ? 'active' : null]" ><a href="#contact">Contact</a></li>
-            <li :class="[(activePage === 'applications') ? 'active' : null]"><a href="#applications">Apps</a></li>
-            <li :class="[(activePage === 'about') ? 'active' : null]"><a href="#about">About</a></li>
-            <li :class="[(activePage === 'home') ? 'active' : null]" ><a href="#home">Home</a></li>
+            <li class="nav-dropdown-btn" @click="toggleDropDownMenu()">
+                <a>
+                    Go to
+                    <i class="fas fa-caret-down"></i>
+                </a>
+            </li>
+            <div class="dropdown" v-show="dropDownIsVisible">
+                <li v-for="(title, key, index) in navbarItems" :key="index" :class="[(activePage === key) ? 'active' : null]" @click="toggleDropDownMenu()"><a :href="'#'+key">{{title}}</a></li>
+            </div>
         </ul>
     </div>
 </template>
 
 <script>
 import { eventBus } from '../main';
+import $ from 'jquery';
 
 export default {
     name: 'Navbar',
     props: ['isTop'],
     data: function() {
         return {
-            activePage: 'Home'
+            activePage: 'home',
+            dropDownIsActive: false,
+            navbarItems: {
+                home: "Home",
+                about: "About",
+                applications: "App",
+                movies: "Movies",
+                contact: "Contact"
+            }
+        }
+    },
+    computed: {
+        dropDownIsVisible: function() {
+            if (window.innerWidth < 768 && !this.dropDownIsActive) {
+                return false;
+            }
+            return true;
         }
     },
     created () {
         eventBus.$on('activePage', (activePage) => {
             this.activePage = activePage;
         })
+    },
+    mounted() {
+        $(window).resize(() => {
+            this.toggleDropDownMenu();
+        })
+    },
+    methods: {
+        toggleDropDownMenu: function() {
+            this.dropDownIsActive = !this.dropDownIsActive;
+        }
     }
 }
 </script>
@@ -46,8 +78,17 @@ export default {
     box-shadow: 0 2px 4px 0 #b1b1b1;
 }
 
-.navbar ul li {
+.nav-dropdown-btn {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar .dropdown {
     float: right;
+}
+
+.navbar ul li {
+    float: left;
 }
 
 .navbar ul li.active a {
@@ -70,5 +111,22 @@ export default {
 
 .nav-logo a {
     color: rgb(58, 72, 87) !important;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .dropdown {
+        float: none;
+        clear: both;
+        background-color: rgb(245, 245, 250);
+    }
+
+    .navbar ul li {
+        float: none;
+    }
+
+    .navbar ul li.nav-dropdown-btn {
+        display: block;
+        float: right;
+    }
 }
 </style>
