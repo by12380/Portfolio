@@ -159,6 +159,7 @@ export default {
 
     .movie-section {
         text-align: left;
+        padding-bottom: 30px;
     }
 
     .movie-section .header {
@@ -254,7 +255,7 @@ export default {
     }
 
     .lower-section h2 {
-        padding-top: 50px;
+        padding-top: 40px;
     }
 
     .fa-heart {

@@ -26,6 +26,7 @@ export default {
         return {
             activePage: 'home',
             dropDownIsActive: false,
+            winWidth: 0,
             navbarItems: {
                 home: "Home",
                 about: "About",
@@ -37,7 +38,7 @@ export default {
     },
     computed: {
         dropDownIsVisible: function() {
-            if (window.innerWidth < 768 && !this.dropDownIsActive) {
+            if (this.winWidth < 768 && !this.dropDownIsActive) {
                 return false;
             }
             return true;
@@ -47,10 +48,12 @@ export default {
         eventBus.$on('activePage', (activePage) => {
             this.activePage = activePage;
         })
+
+        this.winWidth = window.innerWidth;
     },
     mounted() {
         $(window).resize(() => {
-            this.toggleDropDownMenu();
+            this.winWidth = window.innerWidth;
         })
     },
     methods: {
