@@ -58,7 +58,7 @@ export default {
               description: `A personal Bible study tool to search and save Bible verses in bulk. The app uses
               the Recovery Version Bible for its scripture source.`,
               techStack: ['Angular 4', 'ASP.Net Core', 'Firebase Auth & Database', 'LSM Bible API'],
-              liveDemoLink: 'http://instaver.se',
+              liveDemoLink: 'https://instaver.se',
               repoLink: 'https://github.com/by12380/InstaVerse',
               image: 'instaverse.jpg'
             },
