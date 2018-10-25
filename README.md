@@ -1,5 +1,7 @@
 # My Portfolio
 
+[Check out my portfolio site](https://brianyoung.io)
+
 ## Bio
 
 Hi, my name is Brian. I am a software developer who is passionate about
