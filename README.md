@@ -32,6 +32,6 @@ Angular 4 / ASP.Net Core / Firebase Auth & Database / Azure / LSM Bible API
 
 ### [WhatsVocab](https://github.com/by12380/WhatsVocab)
 
-<img src="https://github.com/by12380/Portfolio/blob/master/src/assets/images/instaverse.jpg" width="600px"/>
+<img src="https://github.com/by12380/Portfolio/blob/master/src/assets/images/whatsvocab.jpg" width="600px"/>
 
 HTML / CSS / Jquery / Longman Dictionary API / News API
