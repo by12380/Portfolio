@@ -101,7 +101,7 @@ export default {
                 });
         },
         computedImageUrl: function(path) {
-            return `https://image.tmdb.org/t/p/w300${path}`;
+            return `https://image.tmdb.org/t/p/w500${path}`;
         },
         computedIsFavorite: function(movieId) {
             const userFavoriteMovies = Object.assign ({}, this.userFavoriteMovies);
