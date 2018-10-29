@@ -6,6 +6,12 @@
       </div>
       <h1 class="name" v-scroll-reveal="{ origin: 'left', delay: 1000 }">BRIAN YOUNG</h1>
       <h2 class="title" v-scroll-reveal="{ origin: 'left', delay: 1000 }">Software Developer</h2>
+      <a
+        href="https://www.dropbox.com/s/ggn6e7qs46mpl98/Resume_Brian%20Young.pdf?raw=1"
+        v-scroll-reveal="{ origin: 'left', delay: 1000 }"
+        target="_blank">
+        <button class="resume-btn">DOWNLOAD RESUME</button>
+      </a>
     </div>
 </template>
 
@@ -58,6 +64,50 @@ export default {
   margin: 0;
   text-shadow: 0px 3px 20px white;
   color: #243342;
+}
+
+.resume-btn {
+  border-radius: 0;
+  border: solid 2px #1D2053;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 20px 10px 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color:#1D2053;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  text-shadow: 0px 3px 10px white;
+  box-shadow: 0 2px 4px rgb(122, 122, 122);
+  transition: 0.2s ease-in;
+}
+
+.resume-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.3;
+  z-index: -99;
+  transition: 0.2s ease-in;
+}
+
+.resume-btn:hover {
+  border: solid 2px rgb(48, 86, 136);
+  color:rgb(48, 86, 136);
+  box-shadow: 0 2px 4px rgb(73, 73, 73);
+}
+
+.resume-btn:hover::before {
+  opacity: 0.5;
+}
+
+button:focus {
+  outline: none;
 }
 </style>
 
