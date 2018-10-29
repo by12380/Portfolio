@@ -38,7 +38,7 @@ export default {
     },
     computed: {
         dropDownIsVisible: function() {
-            if (this.winWidth < 768 && !this.dropDownIsActive) {
+            if (this.winWidth <= 768 && !this.dropDownIsActive) {
                 return false;
             }
             return true;
