@@ -11,7 +11,10 @@
         </div>
         <div class="col-md-6" style="padding-left: 20px">
             <a :href="project.repoLink" target="_blank">
-                <h2 class="project-title">{{ title }}</h2>
+                <h2 class="project-title">
+                    {{ title }}
+                    <i class="fab fa-github"></i>
+                </h2>
             </a>
             <p class="description">{{ project.description }}</p>
             <ul class="tech-stack-list">
@@ -57,6 +60,10 @@ a {
 
 .project-title:hover {
     color: #3e5972;
+}
+
+.project-title .fa-github {
+    padding-left: 8px;
 }
 
 .description {
