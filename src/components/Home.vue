@@ -47,7 +47,7 @@ export default {
 }
 
 .profile-wrapper img{
-  height: 200px;
+  height: 170px;
   border-radius: 50%;
   border: solid 8px rgb(255, 255, 255);
 }
