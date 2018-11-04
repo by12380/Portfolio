@@ -43,9 +43,8 @@ export default {
     data() {
         return {
             info: {
-                Phone: '(909)979-7281',
                 Email: 'by12380@gmail.com',
-                Address: '19941 Ralph St. Walnut, CA 91789'
+                City: 'Los Angeles, California'
             },
             linkedin: 'https://www.linkedin.com/in/highfivebrian/',
             github: 'https://github.com/by12380'
