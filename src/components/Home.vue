@@ -71,7 +71,7 @@ main {
 }
 
 .profile-wrapper img{
-  height: 170px;
+  height: 240px;
   border-radius: 50%;
   border: solid 8px rgb(255, 255, 255);
 }
