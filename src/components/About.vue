@@ -38,7 +38,7 @@
              educating by the way of inspiration, not obligation.`,
             part4: `I have many dreams to fulfill, but the
              top three would be to open a pasta restaurant,
-             travel around the world, and to give to scientific reserach.`
+             travel around the world, and to give to scientific research.`
           }
         }
       }
