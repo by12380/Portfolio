@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             info: {
-                Email: 'by12380@gmail.com',
+                Email: 'brian.young.pro@gmail.com',
                 City: 'Los Angeles, California'
             },
             linkedin: 'https://www.linkedin.com/in/highfivebrian/',
