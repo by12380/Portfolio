@@ -103,6 +103,12 @@ button:focus {
 .fa-arrow-down:hover {
   color: rgb(108, 152, 196);
 }
+
+@media only screen and (max-width: 375px) {
+  .landing-page {
+    min-height: 700px;
+  }
+}
 </style>
 
 
