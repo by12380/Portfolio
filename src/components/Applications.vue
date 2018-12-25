@@ -67,7 +67,7 @@ export default {
               description: `An online vocabulary learning application. Users can search up a particular
                vocabulary and obtain it's definitions and it's
                context usage in modern news articles on the web.`,
-              techStack: ['HTML', 'CSS', 'Jquery', 'Longman Dictionary API', 'News API'],
+              techStack: ['HTML', 'CSS/SCSS', 'Jquery', 'Longman Dictionary API', 'News API'],
               liveDemoLink: 'https://by12380.github.io/WhatsVocab/',
               repoLink: 'https://github.com/by12380/WhatsVocab',
               image: 'whatsvocab.jpg'
