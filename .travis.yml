@@ -4,7 +4,8 @@ node_js:
 before_install:
   - npm install -g surge
 install:
-  - npm install # make sure to install the deps when Travis runs.
+  - yarn # make sure to install the deps when Travis runs.
+  - yarn build
 after_success:
   - ./deploy.sh # TODO(you): deploy the PR changes to your staging server.
   - npm run lh -- https://modern-lamp.surge.sh/
