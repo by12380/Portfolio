@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": " echo \"No test was setup\"",
+    "lh": "lighthousebot"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.1",
