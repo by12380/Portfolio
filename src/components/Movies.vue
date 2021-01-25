@@ -77,11 +77,8 @@ export default {
                 const movies = response.body;
                 let moviesFavoriteCount = {};
                 for (let movieId in movies) {
-                    let count = 0;
-                    for (let userId in movies[movieId]) {
-                        count++;
-                    }
-                    moviesFavoriteCount[movieId] = count;
+                    let userIds = Object.keys(movies[movieId])
+                    moviesFavoriteCount[movieId] = userIds.length;
                 }
                 this.moviesFavoriteCount = moviesFavoriteCount;
             })
