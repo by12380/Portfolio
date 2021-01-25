@@ -36,6 +36,15 @@ export default {
         return {
           projects: [
             {
+              title: 'Autocomplete',
+              description: `Autocomplete is a highly performant, scalable, and available
+               service in the kubernetes environment to provide an application
+                with type-ahead search word suggestions similar to Google search.`,
+              techStack: ['Go', 'Kubernetes', 'Helm', 'MongoDB', 'Minio', 'MongoDB', 'Argo', 'Gin'],
+              repoLink: 'https://github.com/by12380/autocomplete',
+              image: 'autocomplete.jpg'
+            },
+            {
               title: 'React Universal',
               description: `Open Source React+Redux boilerplate for web, mobile,
                 and desktop app development with social-login ready.`,

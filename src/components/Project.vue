@@ -25,8 +25,10 @@
             <div class="image-wrapper">
                 <a :href="project.liveDemoLink" class="overlay-wrapper" target="_blank">
                     <img :src="image" />
-                    <div class="overlay"></div>
-                    <div class="demo-btn">Live Demo</div>
+                    <div v-if="project.liveDemoLink">
+                        <div class="overlay"></div>
+                        <div class="demo-btn">Live Demo</div>
+                    </div>
                 </a>
             </div>
         </div>
@@ -97,7 +99,6 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    cursor: pointer;
 }
 
 .overlay-wrapper img {
