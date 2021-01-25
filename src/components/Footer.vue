@@ -5,7 +5,7 @@
             <img src="../assets/images/logo.png" alt="">
         </div>
         <div class="copyright">
-            <span>Copyright &copy; Brian Young 2019</span>
+            <span>Copyright &copy; Brian Young 2021</span>
         </div>
     </div>
 </template>
